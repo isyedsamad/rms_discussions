@@ -249,7 +249,7 @@ export default function Dashboard() {
 
   if (authLoading) {
     return (
-      <div className="min-h-screen w-full flex items-center justify-center bg-background">
+      <div className="min-h-dvh w-full flex items-center justify-center bg-background">
         <Loader2 className="w-8 h-8 animate-spin text-primary" />
       </div>
     );
@@ -258,7 +258,7 @@ export default function Dashboard() {
   if (!user) return null;
 
   return (
-    <div className="min-h-screen w-full bg-background flex flex-col">
+    <div className="min-h-dvh w-full bg-background flex flex-col">
       <main className="flex flex-1 w-full">
         <div className="hidden md:flex bg-primary px-18 justify-center items-center">
           <div className="flex flex-col">

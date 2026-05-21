@@ -105,7 +105,7 @@ function LoginForm() {
 export default function Home() {
   return (
     <main
-      className="min-h-screen w-full relative flex items-center justify-center md:justify-end bg-cover bg-center"
+      className="min-h-dvh w-full relative flex items-center justify-center md:justify-end bg-cover bg-center"
       style={{ backgroundImage: "url('/muj_building.jpg')" }}
     >
       <div className="absolute inset-0 bg-black/10" />

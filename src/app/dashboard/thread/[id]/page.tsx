@@ -286,7 +286,7 @@ export default function ThreadDetail() {
 
   if (authLoading || (loading && !thread)) {
     return (
-      <div className="min-h-screen w-full flex items-center justify-center bg-background">
+      <div className="min-h-dvh w-full flex items-center justify-center bg-background">
         <Loader2 className="w-8 h-8 animate-spin text-primary" />
       </div>
     );
@@ -295,7 +295,7 @@ export default function ThreadDetail() {
   if (!user || !thread) return null;
 
   return (
-    <div className="h-screen w-full bg-background flex flex-col overflow-hidden">
+    <div className="h-dvh w-full bg-background flex flex-col overflow-hidden">
       <main className="flex flex-1 w-full h-full overflow-hidden">
         <aside className="hidden md:flex bg-primary px-10 py-10 justify-center items-start w-82 shrink-0 h-full overflow-y-auto">
           <div className="flex flex-col w-full">
