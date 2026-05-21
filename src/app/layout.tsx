@@ -4,6 +4,8 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./globals.css";
 
+import { ThemeProvider } from "@/components/theme-provider";
+
 const poppins = Poppins({
   variable: "--font-poppins",
   subsets: ["latin"],
@@ -31,10 +33,18 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${poppins.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
-        {children}
-        <ToastContainer position="top-right" autoClose={3000} theme="colored" />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+          <ToastContainer position="top-right" autoClose={3000} theme="colored" />
+        </ThemeProvider>
       </body>
     </html>
   );

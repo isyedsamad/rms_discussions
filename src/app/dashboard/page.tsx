@@ -16,8 +16,11 @@ import {
   ArrowUpDown,
   ArrowUp,
   ArrowDown,
-  KeyRound
+  KeyRound,
+  Sun,
+  Moon
 } from "lucide-react";
+import { useTheme } from "next-themes";
 import { auth } from "@/lib/firebase";
 import { onAuthStateChanged, signOut, EmailAuthProvider, reauthenticateWithCredential, updatePassword } from "firebase/auth";
 import { Button } from "@/components/ui/button";
@@ -28,6 +31,13 @@ import faculties from "@/lib/faculties.json";
 
 export default function Dashboard() {
   const router = useRouter();
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const [user, setUser] = useState<any>(null);
   const [authLoading, setAuthLoading] = useState(true);
   const [threads, setThreads] = useState<any[]>([]);
@@ -252,7 +262,7 @@ export default function Dashboard() {
       <main className="flex flex-1 w-full">
         <div className="hidden md:flex bg-primary px-18 justify-center items-center">
           <div className="flex flex-col">
-            <div className="inline-flex max-w-fit items-center justify-center py-2.5 px-1.5 bg-card rounded-xl shadow-lg shadow-primary/10 mb-3 border border-border/50">
+            <div className="inline-flex max-w-fit items-center justify-center py-2.5 px-1.5 bg-white rounded-xl shadow-lg shadow-primary/10 mb-3 border border-border/50">
               <Image src="/logo.png" alt="Logo" width={175} height={175} />
             </div>
             <h1 className="text-5xl font-bold leading-13 text-white">
@@ -266,7 +276,7 @@ export default function Dashboard() {
                 variant="outline"
                 size="sm"
                 onClick={() => setIsPasswordModalOpen(true)}
-                className="border-2 border-border text-white hover:text-white bg-white/10 h-11 px-5 max-w-fit hover:bg-white/3"
+                className="border-2 border-white text-white hover:text-white bg-white/10 h-11 px-5 max-w-fit hover:bg-white/3"
               >
                 <KeyRound className="w-4 h-4 mr-2" />
                 Change Password
@@ -275,7 +285,7 @@ export default function Dashboard() {
                 variant="outline"
                 size="sm"
                 onClick={handleLogout}
-                className="border-2 border-border text-white hover:text-white bg-white/10 h-11 px-5 max-w-fit hover:bg-white/3"
+                className="border-2 border-white text-white hover:text-white bg-white/10 h-11 px-5 max-w-fit hover:bg-white/3"
               >
                 <LogOut className="w-4 h-4 mr-2" />
                 Sign Out
@@ -290,10 +300,22 @@ export default function Dashboard() {
                 RMS Discussion Portal
               </h1>
               <p className="text-xs font-semibold text-muted-foreground">
-                Discussion Portal • {user.email}
+                Discussion Portal • @{user.email.split('@')[0]}
               </p>
             </div>
             <div className="flex items-center gap-2">
+              <Button
+                variant="outline"
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                className="border-border px-3 py-4 bg-card text-foreground hover:bg-background"
+                title="Toggle Theme"
+              >
+                {mounted && theme === "dark" ? (
+                  <Sun className="w-4 h-4 text-amber-500" />
+                ) : (
+                  <Moon className="w-4 h-4 text-indigo-500" />
+                )}
+              </Button>
               <Button
                 variant="outline"
                 onClick={() => setIsPasswordModalOpen(true)}

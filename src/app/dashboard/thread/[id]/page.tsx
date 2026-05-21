@@ -13,7 +13,10 @@ import {
   Layers,
   Clock,
   Trash,
+  Sun,
+  Moon
 } from "lucide-react";
+import { useTheme } from "next-themes";
 import { auth } from "@/lib/firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { Button } from "@/components/ui/button";
@@ -24,6 +27,13 @@ export default function ThreadDetail() {
   const router = useRouter();
   const params = useParams();
   const threadId = params.id as string;
+
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const [user, setUser] = useState<any>(null);
   const [authLoading, setAuthLoading] = useState(true);
@@ -288,7 +298,7 @@ export default function ThreadDetail() {
       <main className="flex flex-1 w-full h-full overflow-hidden">
         <aside className="hidden md:flex bg-primary px-10 py-10 justify-center items-start w-82 shrink-0 h-full overflow-y-auto">
           <div className="flex flex-col w-full">
-            <div className="inline-flex max-w-fit items-center justify-center py-2.5 px-1.5 bg-card rounded-xl shadow-lg shadow-primary/10 mb-5 border border-border/50">
+            <div className="inline-flex max-w-fit items-center justify-center py-2.5 px-1.5 bg-white rounded-xl shadow-lg shadow-primary/10 mb-5 border border-border/50">
               <Image src="/logo.png" alt="Logo" width={140} height={140} />
             </div>
             <button
@@ -400,6 +410,19 @@ export default function ThreadDetail() {
             </div>
 
             <div className="flex items-center gap-3 shrink-0 ml-auto pl-4">
+              <Button
+                variant="outline"
+                size="icon"
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                className="border-border bg-card text-foreground hover:bg-background"
+                title="Toggle Theme"
+              >
+                {mounted && theme === "dark" ? (
+                  <Sun className="w-4 h-4 text-amber-500" />
+                ) : (
+                  <Moon className="w-4 h-4 text-indigo-500" />
+                )}
+              </Button>
               <span className={`text-xs font-bold uppercase tracking-wider ${thread.status !== "inactive" ? "text-green-500" : "text-muted-foreground"}`}>
                 {thread.status !== "inactive" ? "Open" : "Closed"}
               </span>
