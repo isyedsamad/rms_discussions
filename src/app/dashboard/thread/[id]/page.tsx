@@ -14,7 +14,8 @@ import {
   Clock,
   Trash,
   Sun,
-  Moon
+  Moon,
+  ChevronLeft
 } from "lucide-react";
 import { useTheme } from "next-themes";
 import { auth } from "@/lib/firebase";
@@ -303,7 +304,7 @@ export default function ThreadDetail() {
             </div>
             <button
               onClick={() => router.push("/dashboard")}
-              className="flex items-center gap-2 text-white/80 hover:text-white mb-5 text-xs font-semibold transition-colors group w-fit"
+              className="flex cursor-pointer items-center gap-2 text-white/80 hover:text-white mb-5 text-xs font-semibold transition-colors group w-fit"
             >
               <ArrowLeft className="w-4 h-4 group-hover:-translate-x-0.5 transition-transform" />
               Back to Threads
@@ -379,21 +380,12 @@ export default function ThreadDetail() {
           </div>
         </aside>
         <div className="flex-1 flex flex-col h-full overflow-hidden">
-          <header className="border-b border-border bg-card px-6 py-4 flex items-center justify-between shadow-sm shrink-0">
+          <header className="border-b border-border bg-card px-6 py-4 flex flex-col sm:flex-row gap-4 items-start sm:items-center sm:justify-between shadow-sm shrink-0">
             <div className="flex items-center gap-4 min-w-0">
-              <Button
-                variant="outline"
-                size="icon"
-                onClick={() => router.push("/dashboard")}
-                className="md:hidden border-border text-foreground hover:bg-muted"
-              >
-                <ArrowLeft className="w-4 h-4" />
-              </Button>
-
               <div className="flex items-center gap-4 min-w-0">
-                <div className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                  <MessageSquare className="w-4 h-4 text-primary" />
-                </div>
+                <button onClick={() => router.push("/dashboard")} className="w-9 h-9 cursor-pointer rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                  <ChevronLeft className="w-5 h-5 text-primary" />
+                </button>
                 <div className="min-w-0">
                   <h2 className="text-base font-bold flex items-center gap-2 text-foreground">
                     {thread.title} <Badge level={thread.priority} className="text-[10px] py-0.5">
@@ -511,7 +503,7 @@ export default function ThreadDetail() {
                                 <button
                                   type="button"
                                   onClick={() => setMessageToDelete(chat.id)}
-                                  className="md:opacity-0 opacity-40 group-hover:opacity-100 focus:opacity-100 transition-opacity p-1.5 rounded-full bg-muted text-red-500 hover:text-destructive cursor-pointer shrink-0"
+                                  className="md:opacity-0 opacity-60 group-hover:opacity-100 focus:opacity-100 transition-opacity p-1.5 rounded-full bg-muted text-red-500 hover:text-destructive cursor-pointer shrink-0"
                                   title="Delete message"
                                 >
                                   <Trash className="w-3.5 h-3.5" />

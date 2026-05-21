@@ -357,7 +357,7 @@ export default function Dashboard() {
               <button
                 type="button"
                 onClick={() => setPriorityFilter("all")}
-                className={`px-3 py-1 text-xs font-semibold rounded-sm border transition-all ${priorityFilter === "all"
+                className={`px-3 py-1 cursor-pointer text-xs font-semibold rounded-sm border transition-all ${priorityFilter === "all"
                   ? "bg-primary border-primary text-primary-foreground shadow-sm shadow-primary/10"
                   : "bg-card border-border text-muted-foreground hover:text-foreground hover:bg-muted/40"
                   }`}
@@ -367,7 +367,7 @@ export default function Dashboard() {
               <button
                 type="button"
                 onClick={() => setPriorityFilter("high")}
-                className={`px-3 py-1 text-xs font-semibold rounded-sm border transition-all ${priorityFilter === "high"
+                className={`px-3 py-1 cursor-pointer text-xs font-semibold rounded-sm border transition-all ${priorityFilter === "high"
                   ? "bg-red-500/10 border-red-500/25 text-red-500 hover:bg-red-500/20"
                   : "bg-card border-border text-muted-foreground hover:text-foreground hover:bg-muted/40"
                   }`}
@@ -377,7 +377,7 @@ export default function Dashboard() {
               <button
                 type="button"
                 onClick={() => setPriorityFilter("medium")}
-                className={`px-3 py-1 text-xs font-semibold rounded-sm border transition-all ${priorityFilter === "medium"
+                className={`px-3 py-1 cursor-pointer text-xs font-semibold rounded-sm border transition-all ${priorityFilter === "medium"
                   ? "bg-amber-500/10 border-amber-500/25 text-amber-500 hover:bg-amber-500/20"
                   : "bg-card border-border text-muted-foreground hover:text-foreground hover:bg-muted/40"
                   }`}
@@ -387,7 +387,7 @@ export default function Dashboard() {
               <button
                 type="button"
                 onClick={() => setPriorityFilter("low")}
-                className={`px-3 py-1 text-xs font-semibold rounded-sm border transition-all ${priorityFilter === "low"
+                className={`px-3 py-1 cursor-pointer text-xs font-semibold rounded-sm border transition-all ${priorityFilter === "low"
                   ? "bg-blue-500/10 border-blue-500/25 text-blue-500 hover:bg-blue-500/20"
                   : "bg-card border-border text-muted-foreground hover:text-foreground hover:bg-muted/40"
                   }`}
