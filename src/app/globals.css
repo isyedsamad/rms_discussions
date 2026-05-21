@@ -3,7 +3,7 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --background: 240 5% 98.5%;
+  --background: 240 5% 97.5%;
   /* --background: 0 0% 100%; */
   --foreground: 240 10% 3.9%;
 
@@ -107,6 +107,7 @@
 
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-poppins), sans-serif;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
